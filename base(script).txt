@@ -1,0 +1,22 @@
+create table usuarios(
+	id int primary key not null identity(1,1),
+	nombre varchar(100),
+	correo varchar(200),
+	usuario varchar(50),
+	contrasena varchar(50)
+);
+
+create table tareas(
+	id int primary key not null identity(1,1),
+	nombre varchar(100),
+	descripcion varchar(200),
+	usuario int not null,
+	foreign key (usuario) references usuarios(id)
+);
+
+create table actividades(
+	id int not null primary key identity(1,1),
+	nombre varchar(100),
+	tarea int not null,
+	foreign key(tarea) references tareas(id)
+);
